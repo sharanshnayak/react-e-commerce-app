@@ -19,7 +19,7 @@ function Product({product}){
     }
 
     return(
-        <div className="group hover:scale-110 transition duration-300 ease-in flex flex-col items-center justify-between shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-[0px_0px_95px_53px_#00000024] gap-3 p-4 mt-10 ml-5  rounded-xl border-2 border-slate-400">
+        <div className="group hover:scale-105 transition duration-300 ease-in flex flex-col items-center justify-between shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-[0px_0px_95px_53px_#00000024] gap-3 p-4 mt-10 sm:ml-5 rounded-xl border-2 border-slate-400">
             <div>
                 <h1 className="truncate w-40 mt-1 text-gray-900 font-bold text-lg  text-left">{product.title}</h1>
             </div>
@@ -42,7 +42,7 @@ function Product({product}){
                     <p>{product.rating.rate}</p>
                     <FaRegStar size={25} color="white"/>
                 </div>
-                <p className="text-xl font-semibold tracking-wider text-gray-600">{product.rating.count} Reviews</p>
+                <p className="text-lg font-semibold text-gray-600">{product.rating.count} Reviews</p>
             </div>
         </div>
     );
