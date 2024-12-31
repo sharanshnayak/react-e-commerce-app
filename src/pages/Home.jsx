@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import { FaFilter } from "react-icons/fa"; // Importing the filter icon
-import Product from "../components/Product";
+import Product from "../components/Product.jsx";
 function Home() {
   const url = "https://fakestoreapi.com/products";
   const [loader, setLoader] = useState(true);
