@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast"
 import "../App.css";
 import { FaFilter } from "react-icons/fa"; // Importing the filter icon
 import Product from "../components/Product.jsx";
@@ -21,6 +22,7 @@ function Home() {
       console.log(productsData);
     } catch (error) {
       console.error("Error fetching products:", error);
+      toast.error("Something went worng!!!, Please Refresh",{position:"top-center"});
     } finally {
       console.log("Loader end");
       setLoader(false); // Set loader to false after data is fetched
@@ -28,20 +30,16 @@ function Home() {
   }
 
   function fetchCategoryBasedProducts() {
-    setLoader(true);
     if (category === "All") {
       setItems(products);
-      setLoader(false);
       return;
     }
     const newItems = products.filter(
       (product) => product.category === category
     );
     setItems(newItems);
-    setLoader(false);
   }
   function fetchFilterBasedProducts() {
-    setLoader(true);
     if (filter === "ascendingPrice") {
       setItems((prevItems) =>
         [...prevItems].sort((item1, item2) => item1.price - item2.price)
@@ -55,11 +53,10 @@ function Home() {
     if (filter === "rating") {
       setItems((prevItems) =>
         [...prevItems].sort(
-          (item1, item2) => item1.rating.rate - item2.rating.rate
+          (item1, item2) => item2.rating.rate - item1.rating.rate
         )
       );
     }
-    setLoader(false);
   }
   useEffect(() => {
     fetchProducts();
@@ -83,7 +80,7 @@ function Home() {
 
   return (
     <div className="relative min-h-screen flex flex-col">
-      <div className="flex justify-end gap-4 mt-4 mr-5 font-bold text-gray-900 text-xl">
+      <div className="flex flex-wrap md:justify-end justify-center gap-4 mt-4 mr-5 font-bold text-gray-900 text-xl">
         <div>
           <select
             className="border-2 border-gray-500 rounded-lg  py-2 pl-2"

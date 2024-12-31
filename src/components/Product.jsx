@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem, removeItem } from "../redux/slice/slice.js";
+import { FaRegStar } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 function Product({product}){
@@ -35,6 +36,13 @@ function Product({product}){
                     <button className="group-hover:bg-gray-700 group-hover:text-white transition duration-300 ease-in text-gray-700 border-2 border-gray-700 rounded-full font-bold p-1 px-3 text-md uppercase tracking-wide" onClick={removeProduct}>Remove Item</button>
                     : <button className="group-hover:bg-gray-700 group-hover:text-white transition duration-300 ease-in text-gray-700 border-2 border-gray-700 rounded-full font-bold p-1 px-3 text-md uppercase tracking-wide" onClick={addProduct}>Add to Cart</button>
                 }
+            </div>
+            <div className="flex gap-2 w-[100%] justify-start items-center">
+                <div className="flex justify-center items-center gap-1 bg-green-600 text-slate-200 font-semibold text-2xl p-2 rounded-xl border-2 border-teal-500">
+                    <p>{product.rating.rate}</p>
+                    <FaRegStar size={25} color="white"/>
+                </div>
+                <p className="text-xl font-semibold tracking-wider text-gray-600">{product.rating.count} Reviews</p>
             </div>
         </div>
     );
